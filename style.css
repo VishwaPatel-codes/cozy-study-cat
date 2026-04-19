@@ -56,3 +56,26 @@ body {
     top: 480px;
     image-rendering: pixelated;
 }
+.rug {
+    position: absolute;
+    width: 300px;
+    height: 290px;
+    left: 340px;
+    top: 570px;
+    image-rendering: pixelated;
+    z-index: 0
+}
+.lamp {
+    position: absolute;
+    width: 150px;
+    left: 590px;
+    top: 420px;
+    image-rendering: pixelated;
+}
+.plant {
+    position: absolute;
+    width: 200px;
+    left: 480px;
+    top: 250px;
+    image-rendering: pixelated;
+}
