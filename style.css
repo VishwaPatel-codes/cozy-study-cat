@@ -100,3 +100,113 @@ body {
     top: 550px;
     image-rendering: pixelated;
 }
+.window,.bookshelf,.shelf,.sofa,.cat,.clock,.bookshelf,.frontshelf,.plant,.lamp {
+    transition: transform 0.2s;
+}
+.window:hover,.bookshelf:hover,.sofa:hover,.cat:hover,.clock:hover,.shelf:hover,.frontshelf:hover,.plant:hover,.lamp:hover {
+    transform: translateY(-5px);
+}
+.pomodoro-window {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 330px;
+    height: 350px;
+    background-image: url("assets/pomodoro/background.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.pomodoro-content {
+    position: absolute;
+    top: 11px;
+    left: 23px;
+    right: 23px;
+    bottom: 20px;
+}
+.mode-work, .mode-break {
+    color: #f7e7e7;
+    border: 1px solid #f7e7e7;
+    padding: 1px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    font-style: "Pixelify Sans", sans-serif;
+    margin-top: 6px;
+}
+.mode-work.active {
+    background: #d8a0b2;
+}
+.mode-break.active {
+    background: #d8a0b2;
+}
+.mode-work.inactive,
+.mode-break.inactive {
+    background: #7c7aa8;
+}
+.pomodoro-top {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 5px;
+}
+.close-button {
+    border: none;
+    background: #f1d6de;
+    color: #6f6570;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.mode-buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 0px;
+    margin-bottom: 14px;
+}
+.messege {
+    text-align: center;
+    color: #7091ff;
+    font-size: 12px;
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+.timer {
+    text-align: center;
+    font-size: 63px;
+    font-weight: bolder;
+    color: #d8a0b2;
+    margin: 0px;
+    line-height: 1;
+}
+.cat-gif {
+    display: block;
+    max-width: 200px;
+    max-height: 110px;
+    margin-left: auto;
+    margin-right: auto;
+    image-rendering: pixelated;
+}
+.play-btn,
+.reset-btn {
+    border: none;
+    background: #f1d6de;
+    color: #6f6570;
+    border-radius: 6px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+}
+.play-btn {
+    font-size: 24px;
+    line-height: 40px;
+}
+.reset-btn {
+    font-size: 20px;
+    line-height: 40px;
+}
+.pomodoro-content > div:last-child {
+    text-align: center;
+}
