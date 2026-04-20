@@ -79,3 +79,24 @@ body {
     top: 250px;
     image-rendering: pixelated;
 }
+.clock {
+    position: absolute;
+    width: 80px;
+    left: 620px;
+    top: 150px;
+    image-rendering: pixelated;
+}
+.shelf {
+    position: absolute;
+    width: 200px;
+    left: 680px;
+    top: 250px;
+    image-rendering: pixelated;
+}
+.frontshelf {
+    position: absolute;
+    width: 200px;
+    left: 580px;
+    top: 550px;
+    image-rendering: pixelated;
+}
