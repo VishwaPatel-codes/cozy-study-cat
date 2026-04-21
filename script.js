@@ -210,6 +210,17 @@ const startScreen = document.querySelector(".start-screen");
 const startName = document.querySelector(".start-name");
 const startButton = document.querySelector(".start-button");
 
+let selectedPfp = "blue";
+
+const pfpOptions = document.querySelectorAll(".pfp-option");
+
+pfpOptions.forEach(function(pfp) {
+    pfp.onclick = function() {
+        pfpOptions.forEach(p => p.classList.remove("selected"));
+        pfp.classList.add("selected");
+        selectedPfp = pfp.dataset.pfp;
+    };
+});
 const blackOption = document.querySelector(".black-option");
 const orangeOption = document.querySelector(".orange-option");
 
@@ -240,8 +251,9 @@ startButton.onclick = function () {
     }
 
     profileUsername.textContent = userName;
+    profileCat.src = "assets/profile_" + selectedPfp + ".png";
 
-document.querySelector(".floating-profile").style.display = "flex";
+    document.querySelector(".floating-profile").style.display = "flex";
     startScreen.style.display = "none";
 
     updateProfileCat();

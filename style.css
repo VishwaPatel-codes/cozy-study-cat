@@ -319,12 +319,23 @@ body {
 }
 
 .start-box {
-    width: 340px;
+    width: 420px;
     padding: 25px;
     background: #cfe0ef;
     border-radius: 14px;
     box-shadow: 0 0 20px rgba(0,0,0,0.25);
     text-align: center;
+}
+
+.choose-cat {
+    width: 75px;
+    height: 75px;
+    image-rendering: pixelated;
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 10px;
+    padding: 6px;
+    transition: 0.15s;
 }
 
 .start-title {
@@ -356,17 +367,6 @@ body {
     justify-content: center;
     gap: 20px;
     margin-bottom: 20px;
-}
-
-.choose-cat {
-    width: 90px;
-    height: 90px;
-    image-rendering: pixelated;
-    cursor: pointer;
-    border: 3px solid transparent;
-    border-radius: 10px;
-    padding: 6px;
-    transition: 0.15s;
 }
 
 .choose-cat:hover {
