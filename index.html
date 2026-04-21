@@ -5,26 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Study cafe</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courgette&family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-    <div class="pomodoro-window">
-            <div class="pomodoro-content">
-                <div class="pomodoro-top">
-                    <button class="close-button">X</button>
-                </div>
-                <div class="mode-buttons">
-                    <button class="mode-work active" onclick="showWork()">Work</button>
-                    <button class="mode-break inactive" onclick="showBreak()">Break</button>
-                </div>
-                <p class="messege">YOU CAN DO IT</p>
-                <div class="timer">25:00</div>
-                <img class="cat-gif" src="assets/pomodoro/cat-idle.gif">
-                <div>
-                    <button class="play-btn"> ▶</button>
-                    <button class="reset-btn">↺ </button>
-                </div>
+    <div class="window-box pomodoro-window">
+        <div class="pomodoro-header">
+            <p class="pomodoro-title">POMODORO✦</p>
+            <button class="close-button">X</button>
+        </div>
+        <div class="pomodoro-inner">
+            <div class="mode-buttons">
+                <button class="mode-work active" onclick="showWork()">Work</button>
+                <button class="mode-break inactive" onclick="showBreak()">Break</button>
+            </div>
+            <p class="messege">YOU CAN DO IT</p>
+            <div class="timer">25:00</div>
+            <img class="cat-gif" src="assets/pomodoro/cat-idle.gif">
+            <div class="pomodoro-buttons">
+                <button class="play-btn">▶</button>
+                <button class="reset-btn">↺</button>
             </div>
         </div>
+    </div>
+    <div class="window-box todolist-window">
+    <div class="todo-header">
+        <p class="todo-title">TO DO LIST</p>
+        <button class="todo-close">X</button>
+    </div>
+    <div class="todo-inner">
+        <div class="todo-add-bar">
+            <input type="text" class="todo-input" placeholder="write task...">
+            <button class="todo-add-btn">+</button>
+        </div>
+        <div class="todo-list"></div>
+         <img class="todo-cat" src="assets/cat_dance.gif">
+    </div>
 <script src="script.js"></script>
 </body>
 </html>

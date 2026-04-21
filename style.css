@@ -1,55 +1,40 @@
 body {
     margin: 0;
-    background: #87956f;
+    background-image: url("assets/day_bg.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
+    font-family: "Pixelify Sans", sans-serif;
 }
 .pomodoro-window {
     position: absolute;
     top: 40px;
     right: 40px;
     width: 330px;
-    height: 350px;
-    background-image: url("assets/pomodoro/background.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
+    height: 380px;
+    background: #cfe0ef;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    border-radius: 10px;
+    padding: 10px;
     cursor: move;
 }
-.pomodoro-content {
-    position: absolute;
-    top: 11px;
-    left: 23px;
-    right: 23px;
-    bottom: 20px;
-}
-.mode-work, .mode-break {
-    color: #f7e7e7;
-    border: 1px solid #f7e7e7;
-    padding: 1px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: bold;
-    font-style: "Pixelify Sans", sans-serif;
-    margin-top: 6px;
-}
-.mode-work.active {
-    background: #d8a0b2;
-}
-.mode-break.active {
-    background: #d8a0b2;
-}
-.mode-work.inactive,
-.mode-break.inactive {
-    background: #7c7aa8;
-}
-.pomodoro-top {
+
+.pomodoro-header {
     display: flex;
-    justify-content: flex-end;
-    margin-bottom: 5px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
+
+.pomodoro-title {
+    color: white;
+    font-size: 20px;
+    margin: 0;
+}
+
 .close-button {
     border: none;
     background: #f1d6de;
@@ -58,37 +43,76 @@ body {
     height: 30px;
     border-radius: 4px;
     cursor: pointer;
+    font-family: "Pixelify Sans", sans-serif;
 }
+
+.pomodoro-inner {
+    height: 315px;
+    border-radius: 6px;
+    padding: 12px;
+    background-image: url("assets/bg-sky.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-shadow: 0px 2px 10px rgb(43, 91, 223);
+}
+
 .mode-buttons {
     display: flex;
-    gap: 8px;
     justify-content: center;
-    margin-top: 0px;
-    margin-bottom: 14px;
+    gap: 8px;
+    margin-bottom: 16px;
 }
+
+.mode-work,
+.mode-break {
+    color: #f7e7e7;
+    border: 1px solid #f7e7e7;
+    border-radius: 4px;
+    padding: 2px 12px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Pixelify Sans", sans-serif;
+}
+
+.mode-work.active,
+.mode-break.active {
+    background: #d8a0b2;
+}
+
+.mode-work.inactive,
+.mode-break.inactive {
+    background: #7c7aa8;
+}
+
 .messege {
     text-align: center;
     color: #7091ff;
-    font-size: 12px;
-    margin-top: 18px;
-    margin-bottom: 8px;
+    font-size: 15px;
+    margin: 0 0 10px 0;
 }
+
 .timer {
     text-align: center;
-    font-size: 63px;
-    font-weight: bolder;
+    font-size: 64px;
     color: #d8a0b2;
-    margin: 0px;
-    line-height: 1;
+    margin-bottom: 10px;
 }
+
 .cat-gif {
     display: block;
-    max-width: 200px;
-    max-height: 110px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 160px;
+    height: 120px;
+    object-fit: contain;
+    margin: 0 auto;
     image-rendering: pixelated;
 }
+
+.pomodoro-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
 .play-btn,
 .reset-btn {
     border: none;
@@ -98,16 +122,157 @@ body {
     cursor: pointer;
     width: 40px;
     height: 40px;
-    padding: 0;
+    font-size: 22px;
+    font-family: "Pixelify Sans", sans-serif;
 }
-.play-btn {
-    font-size: 24px;
-    line-height: 40px;
+.todolist-window {
+    position: absolute;
+    top: 140px;
+    left: 80px;
+    width: 310px;
+    height: 380px;
+    background: #cfe0ef;
+    box-shadow: inset 0 2px 10px rgba(0,0,0,0.20);
+    border-radius: 10px;
+    padding: 10px;
 }
-.reset-btn {
+
+.todo-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.todo-title {
+    color: white;
     font-size: 20px;
-    line-height: 40px;
+    margin: 0;
 }
-.pomodoro-content > div:last-child {
-    text-align: center;
+
+.todo-close {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: #f1d6de;
+    color: #6f6570;
+    border-radius: 4px;
+}
+
+.todo-inner {
+    position: relative;
+    background-image: url("assets/bg-sky.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    height: 315px;
+    border-radius: 6px;
+    padding: 12px;
+    box-shadow: 0px 2px 10px rgb(43, 91, 223);
+    overflow: hidden;
+}
+.todo-add-bar {
+    display: flex;
+    gap: 10px;
+}
+
+.todo-input {
+    flex: 1;
+    height: 30px;
+    background: #f1d6de;
+    border: 1px solid #f7e7e7;
+    border-radius: 4px;
+    padding: 0 10px;
+    color: #6f6570;
+    font-size: 14px;
+    font-family: "Pixelify Sans", sans-serif;
+    outline: none;
+}
+
+.todo-input::placeholder {
+    color: #9b7c88;
+}
+
+.todo-add-btn {
+    width: 34px;
+    height: 30px;
+    border: 1px solid #f7e7e7;
+    border-radius: 4px;
+    background: #f1d6de;
+    color: #6f6570;
+    font-size: 18px;
+    font-family: "Pixelify Sans", sans-serif;
+    cursor: pointer;
+}
+.todo-inner {
+    position: relative;
+}
+
+.todo-cat {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    width: 98px;
+    image-rendering: pixelated;
+    pointer-events: none;
+}
+.todo-list {
+    margin-top: 14px;
+    height: 150px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    padding-right: 8px;
+}
+
+.todo-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    background: #7c7aa8;
+    border: 1px solid #f7e7e7;
+    border-radius: 4px;
+
+    padding: 6px 10px;
+    color: #f7e7e7;
+    font-size: 14px;
+    font-family: "Pixelify Sans", sans-serif;
+
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.todo-task span {
+    flex: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    margin-right: 8px;
+}
+
+.delete-task {
+    border: none;
+    background: none;
+    color: #f7e7e7;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: "Pixelify Sans", sans-serif;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.todo-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.todo-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+    background: #d8a0b2;
+    border-radius: 10px;
 }

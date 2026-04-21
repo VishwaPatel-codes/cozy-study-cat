@@ -1,55 +1,75 @@
-    const message = document.querySelector(".messege");
-    const timer = document.querySelector(".timer");
-    const cat = document.querySelector(".cat-gif");
-    const workButton = document.querySelector(".mode-work");
-    const breakButton = document.querySelector(".mode-break");
+const message = document.querySelector(".messege");
+const timer = document.querySelector(".timer");
+const cat = document.querySelector(".cat-gif");
 
-    function showWork() {
+const workButton = document.querySelector(".mode-work");
+const breakButton = document.querySelector(".mode-break");
+
+const playButton = document.querySelector(".play-btn");
+const resetButton = document.querySelector(".reset-btn");
+
+let time = 25 * 60;
+let timerRunning = false;
+let timerInterval;
+
+
+
+function showWork() {
     workButton.classList.add("active");
     workButton.classList.remove("inactive");
 
     breakButton.classList.add("inactive");
     breakButton.classList.remove("active");
 
-    message.textContent = "YOU CAN DO IT";
-    timer.textContent = "25:00";
-    cat.src = "assets/pomodoro/cat-idle.gif";
+    clearInterval(timerInterval);
+    timerRunning = false;
 
     time = 25 * 60;
+    timer.textContent = "25:00";
+
+    message.textContent = "YOU CAN DO IT";
+    cat.src = "assets/pomodoro/cat-idle.gif";
+    playButton.textContent = "▶";
 }
-    function showBreak() {
+
+function showBreak() {
     breakButton.classList.add("active");
     breakButton.classList.remove("inactive");
 
     workButton.classList.add("inactive");
     workButton.classList.remove("active");
 
-    message.textContent = "TAKE A BREAK";
-    timer.textContent = "05:00";
-    cat.src = "assets/pomodoro/cat-break.gif";
+    clearInterval(timerInterval);
+    timerRunning = false;
 
     time = 5 * 60;
+    timer.textContent = "05:00";
+
+    message.textContent = "TAKE A BREAK";
+    cat.src = "assets/pomodoro/cat-break.gif";
+    playButton.textContent = "▶";
 }
-    let time = 25 * 60;
-    let timerRunning = false;
-    let timerInterval;
 
-    const playButton = document.querySelector(".play-btn");
 
-    playButton.onclick = function () {
+
+playButton.onclick = function () {
 
     if (timerRunning === false) {
+
         timerRunning = true;
+
         if (workButton.classList.contains("active")) {
-        cat.src = "assets/pomodoro/cat-study.gif";
-        message.textContent = "FOCUS!!";
+            cat.src = "assets/pomodoro/cat-study.gif";
+            message.textContent = "FOCUS!!";
         } else {
             cat.src = "assets/pomodoro/cat-break.gif";
             message.textContent = "ENJOY YOUR BREAK";
         }
+
         playButton.textContent = "⏸";
 
         timerInterval = setInterval(function () {
+
             time--;
 
             let minutes = Math.floor(time / 60);
@@ -65,25 +85,38 @@
                 clearInterval(timerInterval);
                 timerRunning = false;
                 playButton.textContent = "▶";
+
+                if (workButton.classList.contains("active")) {
+                    cat.src = "assets/pomodoro/cat-idle.gif";
+                    message.textContent = "DONE!";
+                } else {
+                    message.textContent = "BREAK OVER!";
+                }
             }
+
         }, 1000);
 
     } else {
+
         timerRunning = false;
         clearInterval(timerInterval);
+
+        playButton.textContent = "▶";
+
         if (workButton.classList.contains("active")) {
-        cat.src = "assets/pomodoro/cat-idle.gif";
-        message.textContent = "YOU CAN DO IT";
+            cat.src = "assets/pomodoro/cat-idle.gif";
+            message.textContent = "YOU CAN DO IT";
         } else {
             cat.src = "assets/pomodoro/cat-break.gif";
             message.textContent = "TAKE A BREAK";
         }
-        playButton.textContent = "▶";
     }
-}
-const resetButton = document.querySelector(".reset-btn");
+};
+
+
 
 resetButton.onclick = function () {
+
     clearInterval(timerInterval);
     timerRunning = false;
     playButton.textContent = "▶";
@@ -91,33 +124,72 @@ resetButton.onclick = function () {
     if (workButton.classList.contains("active")) {
         time = 25 * 60;
         timer.textContent = "25:00";
+        message.textContent = "YOU CAN DO IT";
+        cat.src = "assets/pomodoro/cat-idle.gif";
     } else {
         time = 5 * 60;
         timer.textContent = "05:00";
+        message.textContent = "TAKE A BREAK";
+        cat.src = "assets/pomodoro/cat-break.gif";
     }
-}
-const pomodoroWindow = document.querySelector(".pomodoro-window");
+};
 
-let isDragging = false;
-let offsetX;
-let offsetY;
 
-pomodoroWindow.addEventListener("mousedown", function (event) {
-    isDragging = true;
 
-    offsetX = event.clientX - pomodoroWindow.offsetLeft;
-    offsetY = event.clientY - pomodoroWindow.offsetTop;
+const windows = document.querySelectorAll(".window-box");
+
+windows.forEach(function(windowBox) {
+
+    let isDragging = false;
+    let offsetX;
+    let offsetY;
+
+    windowBox.addEventListener("mousedown", function(event) {
+        isDragging = true;
+
+        offsetX = event.clientX - windowBox.offsetLeft;
+        offsetY = event.clientY - windowBox.offsetTop;
+    });
+
+    document.addEventListener("mousemove", function(event) {
+        if (isDragging) {
+            windowBox.style.left = event.clientX - offsetX + "px";
+            windowBox.style.top = event.clientY - offsetY + "px";
+        }
+    });
+
+    document.addEventListener("mouseup", function() {
+        isDragging = false;
+    });
+
 });
+const todoInput = document.querySelector(".todo-input");
+const todoAddButton = document.querySelector(".todo-add-btn");
+const todoList = document.querySelector(".todo-list");
 
-document.addEventListener("mousemove", function (event) {
-    if (isDragging) {
-        pomodoroWindow.style.left = event.clientX - offsetX + "px";
-        pomodoroWindow.style.top = event.clientY - offsetY + "px";
+todoAddButton.onclick = function () {
 
-        pomodoroWindow.style.right = "auto";
+    const taskText = todoInput.value;
+
+    if (taskText === "") {
+        return;
     }
-});
 
-document.addEventListener("mouseup", function () {
-    isDragging = false;
-});
+    const task = document.createElement("div");
+    task.classList.add("todo-task");
+
+    task.innerHTML = `
+        <span class="task-text">${taskText}</span>
+        <button class="delete-task">x</button>
+    `;
+
+    todoList.appendChild(task);
+
+    todoInput.value = "";
+
+    const deleteButton = task.querySelector(".delete-task");
+
+    deleteButton.onclick = function () {
+        task.remove();
+    };
+};
