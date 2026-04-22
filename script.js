@@ -1,4 +1,4 @@
-const message = document.querySelector(".messege");
+const message = document.querySelector(".message");
 const timer = document.querySelector(".timer");
 const cat = document.querySelector(".cat-gif");
 
@@ -148,7 +148,7 @@ resetButton.onclick = function () {
 };
 
 
-
+//making windows draggable
 const windows = document.querySelectorAll(".window-box");
 
 windows.forEach(function(windowBox) {
@@ -176,6 +176,7 @@ windows.forEach(function(windowBox) {
     });
 
 });
+//todo list - add and delete tasks
 const todoInput = document.querySelector(".todo-input");
 const todoAddButton = document.querySelector(".todo-add-btn");
 const todoList = document.querySelector(".todo-list");
@@ -206,6 +207,7 @@ todoAddButton.onclick = function () {
         task.remove();
     };
 };
+// start screen - choose name, profile pic and cat
 const startScreen = document.querySelector(".start-screen");
 const startName = document.querySelector(".start-name");
 const startButton = document.querySelector(".start-button");
@@ -265,6 +267,7 @@ startButton.onclick = function () {
 const profileUsername = document.querySelector(".profile-username");
 const sessionPopup = document.querySelector(".session-popup");
 const profileCat = document.querySelector(".profile-cat");
+//changes the companion cat at 25%, 50%,75% and 100%
 function updateProfileCat() {
 
     let totalTime;
@@ -326,6 +329,8 @@ document.addEventListener("mousemove", function (event) {
 document.addEventListener("mouseup", function () {
     draggingProfile = false;
 });
+
+//small messages when cat is clicked
 const catMessage = document.querySelector(".cat-message");
 
 const messages = [
@@ -345,6 +350,7 @@ profileCat.addEventListener("click", function () {
         catMessage.textContent = "";
     }, 2000);
 });
+// profile window - show pfp, username and bio
 const profileCardWindow = document.querySelector(".profile-card-window");
 const cardPfp = document.querySelector(".card-pfp");
 const cardUsername = document.querySelector(".card-username");
