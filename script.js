@@ -340,7 +340,6 @@ const messages = [
     "focus focus!!",
     "meow!! study time"
 ];
-
 profileCat.addEventListener("click", function () {
     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
 
