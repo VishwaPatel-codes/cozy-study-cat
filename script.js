@@ -251,7 +251,11 @@ startButton.onclick = function () {
     }
 
     profileUsername.textContent = userName;
-    profileCat.src = "assets/profile_" + selectedPfp + ".png";
+    cardUsername.textContent = userName;
+
+    profileCat.style.display = "block";
+
+    cardPfp.src = "assets/profile_" + selectedPfp + ".png";
 
     document.querySelector(".floating-profile").style.display = "flex";
     startScreen.style.display = "none";
@@ -261,7 +265,6 @@ startButton.onclick = function () {
 const profileUsername = document.querySelector(".profile-username");
 const sessionPopup = document.querySelector(".session-popup");
 const profileCat = document.querySelector(".profile-cat");
-
 function updateProfileCat() {
 
     let totalTime;
@@ -341,4 +344,27 @@ profileCat.addEventListener("click", function () {
     setTimeout(function () {
         catMessage.textContent = "";
     }, 2000);
+});
+const profileCardWindow = document.querySelector(".profile-card-window");
+const cardPfp = document.querySelector(".card-pfp");
+const cardUsername = document.querySelector(".card-username");
+const cardBioSave = document.querySelector(".card-bio-save");
+const cardBio = document.querySelector(".card-bio");
+const cardBioDisplay = document.querySelector(".card-bio-display");
+const profileCardClose = document.querySelector(".profile-card-close");
+cardBioSave.onclick = function () {
+    cardBioDisplay.textContent = cardBio.value;
+
+    cardBio.style.display = "none";
+    cardBioSave.style.display = "none";
+};
+
+profileCardClose.onclick = function () {
+    profileCardWindow.style.display = "none";
+};
+floatingProfile.addEventListener("dblclick", function () {
+    profileCardWindow.style.display = "block";
+
+    cardUsername.textContent = profileUsername.textContent;
+    cardPfp.src = "assets/profile_" + selectedPfp + ".png";
 });
