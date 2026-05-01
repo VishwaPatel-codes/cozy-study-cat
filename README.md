@@ -20,7 +20,7 @@ HTML · CSS · JavaScript
 
 ## Preview
 
-https://vishwapatel-codes.github.io/cozy-study-cat/
+https://vishwa-io.github.io/cozy-study-cat/
 
 
 
